@@ -69,11 +69,14 @@ const OutpassApproval: React.FC = () => {
   const handleAction = () => {
     if (!selectedRequest || !pendingAction) return;
     
+    // Convert 'approve' to 'approved' and 'reject' to 'rejected' to match the type
+    const newStatus = pendingAction === 'approve' ? 'approved' : 'rejected';
+    
     const updatedRequests = requests.map(req => {
       if (req.id === selectedRequest.id) {
         return {
           ...req,
-          status: pendingAction,
+          status: newStatus,
           comment: comment || undefined
         };
       }

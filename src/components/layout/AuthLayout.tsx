@@ -12,7 +12,6 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({ children }) => {
       <div 
         className="relative flex-1 hidden md:flex flex-col items-center justify-center bg-cover bg-center p-8"
         style={{ 
-          backgroundImage: 'url("https://images.app.goo.gl/Wv1vedmLfKB5hT5R7")',
           backgroundImage: 'url("https://res.cloudinary.com/dcprvbern/image/upload/v1684293054/hostel-building_cmd1se.jpg")'
         }}
       >
