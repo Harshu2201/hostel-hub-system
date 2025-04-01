@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import AuthLayout from '@/components/layout/AuthLayout';
 import LoginForm from '@/components/auth/LoginForm';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { InfoIcon } from 'lucide-react';
 
 const Index: React.FC = () => {
   const [activePortal, setActivePortal] = useState<'student' | 'mess' | 'admin'>('student');
@@ -23,6 +25,15 @@ const Index: React.FC = () => {
   return (
     <AuthLayout>
       <div className="space-y-6">
+        <Card className="bg-muted/50 border-dashed mb-4">
+          <CardContent className="flex items-center gap-3 p-3">
+            <InfoIcon className="h-5 w-5 text-primary" />
+            <p className="text-sm text-muted-foreground">
+              For demo purposes, click the "Use Demo Login" button to automatically fill in credentials for each portal.
+            </p>
+          </CardContent>
+        </Card>
+        
         <Tabs value={activePortal} onValueChange={(value) => setActivePortal(value as 'student' | 'mess' | 'admin')}>
           <TabsList className="grid grid-cols-3 mb-6">
             <TabsTrigger value="student">Student</TabsTrigger>

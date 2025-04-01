@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useNavigate } from 'react-router-dom';
 import { useToast } from "@/components/ui/use-toast";
-import { Eye, EyeOff, LogIn } from 'lucide-react';
+import { Eye, EyeOff, LogIn, KeyRound } from 'lucide-react';
 
 type LoginFormProps = {
   portalType: 'student' | 'mess' | 'admin';
@@ -17,18 +17,30 @@ const portalDetails = {
     description: "Access your hostel services and information",
     color: "btn-student",
     route: "/student",
+    demoCredentials: {
+      username: "student123",
+      password: "student123"
+    }
   },
   mess: {
     title: "Mess Management Portal",
     description: "Track meals and manage mess operations",
     color: "btn-mess",
     route: "/mess",
+    demoCredentials: {
+      username: "mess123",
+      password: "mess123"
+    }
   },
   admin: {
     title: "Hostel Admin Portal",
     description: "Manage hostel operations and student records",
     color: "btn-admin",
     route: "/admin",
+    demoCredentials: {
+      username: "admin123",
+      password: "admin123"
+    }
   },
 };
 
@@ -80,6 +92,11 @@ const LoginForm: React.FC<LoginFormProps> = ({ portalType }) => {
     setShowPassword(!showPassword);
   };
   
+  const useDemoCredentials = () => {
+    setUsername(portal.demoCredentials.username);
+    setPassword(portal.demoCredentials.password);
+  };
+  
   return (
     <Card className="w-full max-w-md animate-fade-up">
       <CardHeader>
@@ -125,7 +142,17 @@ const LoginForm: React.FC<LoginFormProps> = ({ portalType }) => {
             </div>
           </div>
           
-          <div className="flex justify-end">
+          <div className="flex justify-between items-center">
+            <Button 
+              type="button" 
+              variant="outline" 
+              size="sm"
+              className="flex items-center gap-1 text-xs"
+              onClick={useDemoCredentials}
+            >
+              <KeyRound size={14} />
+              Use Demo Login
+            </Button>
             <a href="#" className="text-sm text-primary hover:underline">
               Forgot password?
             </a>
